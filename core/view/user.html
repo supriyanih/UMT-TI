@@ -1,0 +1,75 @@
+<div ng-include src="'./core/view/header.html'"></div>
+<div growl></div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span12">
+                    <table class="table table-condensed ">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Nama</th>
+                            <th>level</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="v in userlist" class="repeat-item">
+                            <td>{{v.username}}</td>
+                            <td>{{v.nama}}</td>
+                            <td>{{v.level}}</td>
+                           
+                            <td>
+                                <button class="btn btn-warning" data-ng-click="changeIsactive(v.userid ,v.isactive )">{{ v.isactive == 1 ? 'active' : 'nonactive'; }}</button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<footer class="win-ui-dark win-commandlayout navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+
+            <div class="span4 align-left">
+                <a href="./index.html#!/home"class="win-command">
+                    <span class="win-commandicon win-commandring icon-home"></span>
+                    <span class="win-label">Home</span>
+                </a>
+                <hr class="win-command">
+                
+            </div>
+            <div class="span8 align-right">
+                <button class="win-command" ng-click="gotoPage(pagefirst)" ng-disabled="page <= pagefirst">
+                    <span class="win-commandicon win-commandring   icon-first"></span>
+                    <span class="win-label">Pertama</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage(page-1)" ng-disabled="page <= pagefirst">
+                    <span class="win-commandicon win-commandring icon-previous"></span>
+                    <span class="win-label">Sebelumnya</span>
+                </button>
+                <button type="button" class="win-command" ng-repeat="p in pagination" ng-click="gotoPage(p)">
+                    <span class="win-commandicon win-commandring icon-grid"></span>
+                    <span class="win-label">Page {{p}}</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage('berikutnya')" ng-disabled="page >= pagelast">
+                    <span class="win-commandicon win-commandring icon-next"></span>
+                    <span class="win-label">Berikutnya</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage(pagelast)" ng-disabled="page >= pagelast">
+                    <span class="win-commandicon win-commandring  icon-last"></span>
+                    <span class="win-label">Terakhir</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>

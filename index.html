@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <title>UMT-TI</title>
+
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="BootMetro : Simple and complete web UI framework to create web apps with Windows 8 Metro user interface." />
+    <meta name="keywords" content="bootmetro, modern ui, modern-ui, metro, metroui, metro-ui, metro ui, windows 8, metro style, bootstrap, framework, web framework, css, html" />
+    <meta name="author" content="AozoraLabs by Marcello Palmitessa"/>
+
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/bootmetro.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/bootmetro-responsive.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/bootmetro-icons.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/bootmetro-ui-light.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/transitions.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/print-style.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/angular-growl.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/font.css"> -->
+
+    <!--  these two css are to use only for documentation -->
+    <link rel="stylesheet" type="text/css" href="./lib/bootmetro/assets/css/demo.css">
+
+
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+    <script src="./lib/bootmetro/assets/js/modernizr-2.6.2.min.js"></script>
+    
+    <!-- First run script, checking using RequireJS or NodeJS require -->
+    <script type="text/javascript">
+        if(typeof require !== "undefined"){
+            window.requireNode = window.require;
+            window.require = undefined;
+        }
+    </script>
+
+</head>
+
+<body>
+<div id="wrap">
+    <div data-ng-view></div>
+</div>
+
+<!-- load jQuery-->
+<script type="text/javascript" src="./lib/jquery/jquery-1.8.2.min.js"></script>
+
+
+<!--[if IE 7]>
+<script type="text/javascript" src="./lib/bootmetro/assets/js/bootmetro-icons-ie7.js">
+<![endif]-->
+
+<script type="text/javascript" src="./lib/bootmetro/assets/js/min/bootstrap.min.js"></script>
+<script type="text/javascript" src="./lib/bootmetro/assets/js/bootmetro-panorama.js"></script>
+<script type="text/javascript" src="./lib/bootmetro/assets/js/bootmetro-pivot.js"></script>
+<script type="text/javascript" src="./lib/bootmetro/assets/js/bootmetro-charms.js"></script>
+<script type="text/javascript" src="./lib/bootmetro/assets/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="./lib/bootmetro/assets/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="./lib/bootmetro/assets/js/jquery.touchSwipe.min.js"></script>
+
+<script type="text/javascript" src="./lib/bootmetro/assets/js/holder.js"></script>
+<!--<script type="text/javascript" src="./assets/js/perfect-scrollbar.with-mousewheel.min.js"></script>-->
+<script type="text/javascript" src="./lib/bootmetro/assets/js/demo.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.7/angular.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.7/angular-animate.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.7/angular-route.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.7/angular-local-storage.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.7/angular-growl.js"></script>
+<script  data-main="main.js" src="./lib/require/require.js"></script>
+
+
+</body>
+</html>

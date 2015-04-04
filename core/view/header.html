@@ -1,0 +1,31 @@
+<div id="nav-bar" class="" data-ng-controller="CtrlHeader">
+    <div class="pull-left">
+        <div id="header-container">
+            <a id="backbutton" class="win-backbutton" href="./index.html#!/home"></a>
+            <h3>SISTEM INFORMASI AKADEMIK</h3>
+            <h3>FAKULTAS TEKNIK UNIVERSITAS MUHAMMADIYAH TANGERANG</h3>
+        </div>
+    </div>
+    <div class="pull-right">
+        <div id="top-info" class="pull-right">
+            <a id="logged-user" href="#" class="win-command pull-right">
+                <span class="win-commandicon win-commandring  icon-logout" data-ng-click="logout()"></span>
+            </a>
+            <div class="pull-left">
+                <h3>{{ user[0]['username'] }} </h3>
+                <h4> {{ user[0]['nama'] }} </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function CtrlHeader($scope,$location,localStorageService){
+        $scope.user= localStorageService.get('user');
+        $scope.logout = function(){
+            localStorageService.clearAll();
+            $location.path('/login');
+        };
+        
+    }
+</script>

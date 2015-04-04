@@ -1,0 +1,73 @@
+<div ng-include src="'./core/view/header.html'"></div>
+<div growl></div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span12">
+                    <table class="table table-condensed ">
+                        <thead>
+                            <tr>
+                                <th><h5>Kode</h5></th>
+                                <th><h5>Dosen</h5></th>
+                                <th><h5>Mata Kuliah</h5></th>
+                                <th><h5>smstr</h5></th>
+                                <th><h5>kelas</h5></th>
+                                <th><h5>prodi</h5></th>
+                                <th><h5>Waktu</h5></th>
+                                <th><h5>R.</h5></th>
+                                <th><h5>thn akd</h5></th>
+                                <th><h5>smtr tempuh</h5></th>
+                                
+                                <th><h5>Action</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="v in jadwal" class="repeat-item">
+                                <td><h5> {{v.kd_jadwal}} </h5></td>
+                                <td><h5> {{v.nama}} </h5></td>
+                                <td><h5> {{v.nm_matkul}} </h5></td>
+                                <td><h5> {{v.matkul_smtr}} </h5></td>
+                                <td><h5> {{v.kelas}} </h5></td>
+                                <td><h5> {{v.matkul_prodi}} </h5></td>
+                                <td><h5> {{v.hari}}({{v.mulai}}-{{v.selesai}})</h5></td>
+                                
+                                <td><h5> {{v.ruang}} </h5></td>
+                                <td><h5> {{v.thn_akademik}} </h5></td>
+                                <td><h5> {{v.smtr_tmp}} </h5></td>
+                                
+                             
+                               
+                                <td style="width: 2%;">
+                                    <button   class="btn-small btn-info" type="button"><h6>INPUT</h6></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+  
+
+<footer class="win-ui-dark win-commandlayout navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+
+            <div class="span4 align-left">
+                <a href="./index.html#!/home"class="win-command">
+                    <span class="win-commandicon win-commandring icon-home"></span>
+                    <span class="win-label">Home</span>
+                </a>
+                <hr class="win-command">
+                
+            </div>
+            
+           
+        </div>
+    </div>
+</footer>

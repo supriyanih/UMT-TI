@@ -1,0 +1,253 @@
+<div ng-include src="'./core/view/header.html'"></div>
+<div growl></div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span12">
+                    <table class="table table-condensed ">
+                        <thead>
+                            <tr>
+                                <th><h5>Kode</h5></th>
+                                <th><h5>Dosen</h5></th>
+                                <th><h5>Mata Kuliah</h5></th>
+                                <th><h5>smstr</h5></th>
+                                <th><h5>kelas</h5></th>
+                                <th><h5>prodi</h5></th>
+                                <th><h5>Waktu</h5></th>
+                                <th><h5>R.</h5></th>
+                                <th><h5>thn akd</h5></th>
+                                <th><h5>smtr tempuh</h5></th>
+                                <th><h5>status</h5></th>
+                                <th><h5>tampil</h5></th>
+                                <th><h5>Action</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="v in jadwal" class="repeat-item">
+                                <td><h5> {{v.kd_jadwal}} </h5></td>
+                                <td><h5> {{v.nama}} </h5></td>
+                                <td><h5> {{v.nm_matkul}} </h5></td>
+                                <td><h5> {{v.matkul_smtr}} </h5></td>
+                                <td><h5> {{v.kelas}} </h5></td>
+                                <td><h5> {{v.matkul_prodi}} </h5></td>
+                                <td><h5> {{v.hari}}({{v.mulai}}-{{v.selesai}})</h5></td>
+                                
+                                <td><h5> {{v.ruang}} </h5></td>
+                                <td><h5> {{v.thn_akademik}} </h5></td>
+                                <td><h5> {{v.smtr_tmp}} </h5></td>
+                                <td>
+                                    <div ng-if="v.status === '1'">
+                                        <button  ng-click="" class="btn-small btn-success" type="button" title="Ket : Jadwal aktif atau selesai"><h6>aktif</h6></button>
+                                    </div>
+                                    
+                                    <div ng-if="v.status === '0'">
+                                        <button  ng-click="" class="btn-small btn-warning" type="button" title="Ket : Jadwal aktif atau selesai"><h6>selesai</h6></button>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    <div ng-if="v.aksi === '1'">
+                                        <button  ng-click="" class="btn-small btn-success" type="button" title="tampil di website krs online"><h6>show</h6></button></td>
+                                    </div>
+                                    
+                                    <div ng-if="v.aksi === '0'">
+                                        <button  ng-click="" class="btn-small btn-warning" type="button" title="sembunyikan di website krs online "><h6>hide</h6></button></td>
+                                    </div>  
+
+                                <td style="width: 2%;">
+                                    <button  ng-click="modalJadwal('Edit',v.id_jadwal)" class="btn-small btn-info" type="button"><h6>Edit</h6></button>
+                                </td>
+                                <td style="width: 2%;">
+                                    <button  ng-click="delete(v.id_jadwal)" class="btn-small btn-info" type="button"><h6>Delete</h6></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal {{modaloption}} " data-ng-init="modaloption = 'hide'">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" data-ng-click="closeModal()" aria-hidden="true"></button>
+        <h3 style="color: #040404">{{action}} Data</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Kode</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="kd_jadwal" class="span3"  ng-model="data.kd_jadwal" />
+                        <input type="hidden" name="kd_jadwal" class="span3"  ng-model="data.id_jadwal" />
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Dosen</label>
+                <div class="controls">
+                    <div class="span12" >
+
+                        <select name="dosen" class="span3" ng-model="data.dosen"  required>
+
+                            <option ng-repeat="(v, k) in datadosen" value="{{k.staff_id}}" >{{k.nik}}-{{k.nama}}</option>
+
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Mata Kuliah</label>
+                <div class="controls">
+                    <div class="span12" >
+
+                        <select name="matkul" class="span3" ng-model="data.matkul"  required>
+
+                            <option ng-repeat="(v, k) in datamatkul" value="{{k.id_matkul}}" >{{k.kd_matkul}}-{{k.nm_matkul}}</option>
+
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Kelas</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <select name="kelas" class="span3" ng-model="data.kelas"  required>
+                            <option value="Reguler">Reguler</option>
+                            
+                            <option value="P2K">P2K</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Hari</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="hari" class="span3"  ng-model="data.hari" />
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Jam Mulai</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="mulai" class="span3"  ng-model="data.mulai" />
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Jam Selesai</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="selesai" class="span3"  ng-model="data.selesai" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Ruangan Kelas</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="ruang" class="span3"  ng-model="data.ruang" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Tahun Ajaran</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="thn_akademik" class="span3"  ng-model="data.thn_akademik" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Semester Tempuh</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <select name="smtr_tmp" class="span3" ng-model="data.smtr_tmp"  required>
+                            <option value="genap">genap</option>
+                            <option value="gasal">gasal</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Jumlah Mahasiswa</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="mak_siswa" class="span3"  ng-model="data.mak_siswa" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button"  data-ng-click="closeModal()" class="btn">Close</button>
+        <button ng-click="save(data, action)" class="btn btn-primary">Save changes</button>
+    </div>
+</div>
+
+<footer class="win-ui-dark win-commandlayout navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+
+            <div class="span4 align-left">
+                <a href="./index.html#!/home"class="win-command">
+                    <span class="win-commandicon win-commandring icon-home"></span>
+                    <span class="win-label">Home</span>
+                </a>
+                <hr class="win-command">
+                <button class="win-command" ng-click="modalJadwal('Tambah')" >
+                    <span class="win-commandicon win-commandring icon-plus-5"></span>
+                    <span class="win-label">Tambah</span>
+                </button>
+            </div>
+            <div class="span8 align-right">
+                <button class="win-command" ng-click="gotoPage(pagefirst)" ng-disabled="page <= pagefirst">
+                    <span class="win-commandicon win-commandring   icon-first"></span>
+                    <span class="win-label">Pertama</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage(page - 1)" ng-disabled="page <= pagefirst">
+                    <span class="win-commandicon win-commandring icon-previous"></span>
+                    <span class="win-label">Sebelumnya</span>
+                </button>
+                <button type="button" class="win-command" ng-repeat="p in pagination" ng-click="gotoPage(p)">
+                    <span class="win-commandicon win-commandring icon-grid"></span>
+                    <span class="win-label">Page {{p}}</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage('berikutnya')" ng-disabled="page >= pagelast">
+                    <span class="win-commandicon win-commandring icon-next"></span>
+                    <span class="win-label">Berikutnya</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage(pagelast)" ng-disabled="page >= pagelast">
+                    <span class="win-commandicon win-commandring  icon-last"></span>
+                    <span class="win-label">Terakhir</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>

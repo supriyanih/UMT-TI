@@ -1,0 +1,42 @@
+@media screen {
+    table, td, th, .ng-scope th {
+        font-size: 12pt;
+    }
+}
+
+@media print{
+    * {
+        -webkit-print-color-adjust:exact;
+    }
+
+    .noprint,
+    .nav-tabs,
+    .modal-backdrop,
+    #header-container > .win-backbutton,
+    #header-container > h5,
+    #top-info
+    {
+        display: none
+    }
+
+/*    table, td, th {
+        *//*border: 1px solid;*//*
+        font-size: 12pt;
+        padding: 0;
+    }
+
+    .table th {
+        font-size: 12pt;
+        text-transform: capitalize;
+        border: 1px;
+    }
+
+    .tab-content {
+        margin-top: -20px;
+    }*/
+}
+
+@page{
+    margin: 0;
+    size: A4 Landscape;
+}

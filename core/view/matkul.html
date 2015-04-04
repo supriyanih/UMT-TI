@@ -1,0 +1,157 @@
+<div ng-include src="'./core/view/header.html'"></div>
+<div growl></div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span12">
+                    <table class="table table-condensed ">
+                        <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Mata Kuliah</th>
+                            <th>Program Studi</th>                          
+                            <th>Semester</th>
+                            <th>SKS</th>
+                             
+                            <th >Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="v in matkul" class="repeat-item">
+                             <td><h5> {{ v.kd_matkul }} </h5></td>
+                            <td><h5> {{ v.nm_matkul }} </h5></td>
+                             <td><h5> {{v.matkul_prodi}} </h5></td>
+                              
+                               <td><h5> {{v.matkul_smtr}} </h5></td>
+                                <td><h5> {{v.sks}} </h5></td>
+                                
+                                   
+                            <td style="width: 2%;">
+                                <button  ng-click="modalMatkul('Edit', v.id_matkul)" class="btn-small btn-info" type="button"><h6>Edit</h6></button>
+                            </td>
+                            <td style="width: 2%;">
+                                <button  ng-click="delete(v.id_matkul)" class="btn-small btn-info" type="button"><h6>Delete</h6></button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal {{modaloption}} " data-ng-init="modaloption='hide'">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" data-ng-click="closeModal()" aria-hidden="true"></button>
+        <h3 style="color: #040404">{{action}} Data</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Kode</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="kd_matkul" class="span3"  ng-model="data.kd_matkul" />
+                        <input type="hidden" name="kd_matkul" class="span3"  ng-model="data.id_matkul" />
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label"style="color: #040404">Mata Kuliah</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="nm_matkul" class="span3"  ng-model="data.nm_matkul" />
+                    </div>
+                </div>
+            </div>
+                
+             <div class="control-group">
+                 <label class="control-label"style="color: #040404">Program Studi</label>
+                <div class="controls">
+                    <div class="span12" >
+                        
+                        <select name="matkul_prodi" class="span3" ng-model="data.matkul_prodi"  required>
+                                                      
+                                <option ng-repeat="(v, k) in dataprodi" value="{{k.nm_prodi}}" >{{k.nm_prodi}}</option>
+                           
+                        </select>
+                        
+                    </div>
+                </div>
+            </div>
+            
+                
+            <div class="control-group">
+                 <label class="control-label"style="color: #040404">Semester</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="matkul_smtr" class="span3"  ng-model="data.matkul_smtr" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                 <label class="control-label"style="color: #040404">SKS</label>
+                <div class="controls">
+                    <div class="span12" >
+                        <input type="text" name="sks" class="span3"  ng-model="data.sks" />
+                    </div>
+                </div>
+            </div>
+           
+            
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button"  data-ng-click="closeModal()" class="btn">Close</button>
+        <button ng-click="save(data,action)" class="btn btn-primary">Save changes</button>
+    </div>
+</div>
+
+<footer class="win-ui-dark win-commandlayout navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+
+            <div class="span4 align-left">
+                <a href="./index.html#!/home"class="win-command">
+                    <span class="win-commandicon win-commandring icon-home"></span>
+                    <span class="win-label">Home</span>
+                </a>
+                <hr class="win-command">
+                <button class="win-command" ng-click="modalMatkul('Tambah')" >
+                    <span class="win-commandicon win-commandring icon-plus-5"></span>
+                    <span class="win-label">Tambah</span>
+                </button>
+            </div>
+            <div class="span8 align-right">
+                <button class="win-command" ng-click="gotoPage(pagefirst)" ng-disabled="page <= pagefirst">
+                    <span class="win-commandicon win-commandring   icon-first"></span>
+                    <span class="win-label">Pertama</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage(page-1)" ng-disabled="page <= pagefirst">
+                    <span class="win-commandicon win-commandring icon-previous"></span>
+                    <span class="win-label">Sebelumnya</span>
+                </button>
+                <button type="button" class="win-command" ng-repeat="p in pagination" ng-click="gotoPage(p)">
+                    <span class="win-commandicon win-commandring icon-grid"></span>
+                    <span class="win-label">Page {{p}}</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage('berikutnya')" ng-disabled="page >= pagelast">
+                    <span class="win-commandicon win-commandring icon-next"></span>
+                    <span class="win-label">Berikutnya</span>
+                </button>
+                <button class="win-command" ng-click="gotoPage(pagelast)" ng-disabled="page >= pagelast">
+                    <span class="win-commandicon win-commandring  icon-last"></span>
+                    <span class="win-label">Terakhir</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>

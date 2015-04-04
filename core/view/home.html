@@ -1,0 +1,151 @@
+<div growl></div>
+<div ng-include src="'./core/view/header.html'"></div>
+<!--<div id="metro-container" class="-container">-->
+<!--<div class="row">-->
+<!--<div id="hub" class="metro">-->
+<div class="metro panorama">
+    <div class="panorama-sections">
+
+        <div class="panorama-section"  data-ng-if="level[0]['level'] == 'admin'">
+            <div class="tile-column-span-2">
+                <a class="tile wide imagetext bg-color-blueDark" href="./index.html#!/user">
+                <div class="image-wrapper">
+                    <span class="icon  icon-accessibility"></span>
+                </div>
+                <div class="column-text">
+                    <div class="text">Data Master </div>
+                    <div class="text">Administrasi </div>
+                 
+                </div>
+                </a>
+                
+                <a class="tile wide imagetext bg-color-greenDark" href="./index.html#!/dosen">
+                <div class="image-wrapper">
+                    <span class="icon  icon-address-book-2"></span>
+                </div>
+                <div class="column-text">
+                    <div class="text">Data Master </div>
+                    <div class="text">Staff Pengajar </div>
+                 
+                </div>
+                </a>
+               
+                <a class="tile wide imagetext bg-color-purple" href="./index.html#!/mhs">
+                <div class="image-wrapper">
+                    <span class="icon  icon-address-book"></span>
+                </div>
+                <div class="column-text">
+                    <div class="text">Data Master </div>
+                    <div class="text">Mahasiswa </div>
+                 
+                </div>
+                </a>
+            </div>
+
+        </div>
+
+   <div class="panorama-section"  data-ng-if="level[0]['level'] == 'admin'">
+            <div class="tile-column-span-2">
+                <a class="tile wide imagetext bg-color-green" href="./index.html#!/prodi">
+                <div class="image-wrapper">
+                    <span class="icon  icon-atom"></span>
+                </div>
+                <div class="column-text">
+                    <div class="text">Data Master </div>
+                    <div class="text">Program Studi </div>
+                 
+                </div>
+                </a>
+                
+                <a class="tile wide imagetext bg-color-g" href="./index.html#!/matkul">
+                <div class="image-wrapper">
+                    <span class="icon  icon-book-2"></span>
+                </div>
+                <div class="column-text">
+                    <div class="text">Data Master </div>
+                     <div class="text">Mata Kuliah</div>
+                 
+                </div>
+                </a>
+               
+                <a class="tile wide imagetext bg-color-pink" href="./index.html#!/jadwal">
+                <div class="image-wrapper">
+                    <span class="icon  icon-lab"></span>
+                </div>
+                <div class="column-text">
+                    <div class="text">Data Master </div>
+                     <div class="text">Jadwal Kuliah </div>
+                 
+                </div>
+                </a>
+            </div>
+
+        </div>
+        <div class="panorama-section"  data-ng-if="level[0]['level'] == 'dosen'">
+            <div class="tile-column-span-2">
+                
+               
+                <a class="tile wide imagetext bg-color-pink" href="./index.html#!/jadwal_dosen">
+                <div class="image-wrapper">
+                    <span class="icon  icon-lab"></span>
+                    
+                </div>
+                <div class="column-text">
+                   
+                     <div class="text">Jadwal Kuliah </div>
+                 
+                </div>
+                    
+                </a>
+            </div>
+
+        </div>
+       
+
+        <div class="panorama-section tile-span-4">
+
+
+            <a class="tile wide imagetext bg-color-blueDark" href="#">
+                <div class="image-wrapper">
+                    <span class="icon icon-pencil"></span>
+                </div>
+                <div class="column-text">
+                    <div class="text">Ganti Password</div>
+                    <div class="text-header"><input type="password" data-ng-model="password"  placeholder="Password"> </div>
+                    <div class="text-header"><input type="password" data-ng-model="passwordulangi"  placeholder="Ulangi Password"> </div>
+                    <div class="text-header"><button class="btn-danger" data-ng-click="changePassword()"><img data-ng-show="loadingp" src="image/ajax-loader.gif"> <p data-ng-hide="loadingp">Save</p></button></div>
+                </div>
+            </a>
+            <a data-ng-if="level[0]['level'] == 'admin'"  class="tile app bg-color-orange" href="./index.html#!/user">
+                <div class="image-wrapper">
+                    <span class="icon  icon-list-2"></span>
+                </div>
+                <div class="app-label">List </div>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+<a id="panorama-scroll-prev" href="#"></a>
+<a id="panorama-scroll-next" href="#"></a>
+<div id="panorama-scroll-prev-bkg"></div>
+<div id="panorama-scroll-next-bkg"></div>
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<script type="text/javascript">
+
+    $('.panorama').panorama({
+        //nicescroll: false,
+        showscrollbuttons: true,
+        keyboard: true,
+        parallax: true
+    });
+
+    //      $(".panorama").perfectScrollbar();
+
+    $('#pivot').pivot();
+
+</script>
